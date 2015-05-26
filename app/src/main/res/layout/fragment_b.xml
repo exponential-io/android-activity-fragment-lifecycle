@@ -1,24 +1,24 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:tools="http://schemas.android.com/tools"
-              android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              tools:context="io.exponential.androidactivityandfragmentlifecycle.AFragment">
+              android:orientation="vertical"
+              tools:context="io.exponential.androidactivityandfragmentlifecycle.BFragment">
 
     <EditText
-        android:id="@+id/fragment_a_name"
+        android:id="@+id/fragment_b_city"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/label_first_last_name"/>
+        android:hint="@string/label_city"/>
 
     <Button
-        android:id="@+id/fragment_a_display_name"
+        android:id="@+id/fragment_b_update_city"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/display_name"/>
+        android:text="@string/display_city"/>
 
     <TextView
-        android:id="@+id/fragment_a_city"
+        android:id="@+id/fragment_b_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/placeholder"/>

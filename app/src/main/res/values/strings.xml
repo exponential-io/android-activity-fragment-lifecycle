@@ -1,9 +1,10 @@
 <resources>
     <string name="app_name">Android Activity and Fragment Lifecycle</string>
-
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-
-<!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="display_name">Display Name</string>
+    <string name="placeholder">Placeholder</string>
+    <string name="label_first_last_name">First and last name</string>
+    <string name="title_activity_b">BActivity</string>
+    <string name="label_city">In which city do you live?</string>
+    <string name="display_city">Display City</string>
 </resources>

@@ -12,33 +12,30 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 
-public class AFragment extends Fragment {
-    private static final String ARG_CITY = "city";
-    private String city;
+public class BFragment extends Fragment {
+    private static final String ARG_NAME = "name";
+    private String name;
     private Callbacks callbacks;
 
-    OnClickListener displayNameHandler = new OnClickListener() {
+    OnClickListener updateCityHandler = new OnClickListener() {
         @Override
         public void onClick(View v) {
-            String name = ((EditText) getView().findViewById(R.id.fragment_a_name))
+            String city = ((EditText) getView().findViewById(R.id.fragment_b_city))
                     .getText().toString();
-
-            if (callbacks != null) {
-                callbacks.updateName(name);
-            }
+            callbacks.setCity(city);
         }
     };
 
-    // Factory method without arguments
-    public static AFragment newInstance(String city) {
-        AFragment aFragment = new AFragment();
+    // Factory method
+    public static BFragment newInstance(String name) {
+        BFragment fragment = new BFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_CITY, city);
-        aFragment.setArguments(args);
-        return aFragment;
+        args.putString(ARG_NAME, name);
+        fragment.setArguments(args);
+        return fragment;
     }
 
-    public AFragment() {
+    public BFragment() {
         // Required empty public constructor
     }
 
@@ -46,7 +43,7 @@ public class AFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            city = getArguments().getString(ARG_CITY);
+            name = getArguments().getString(ARG_NAME);
         }
     }
 
@@ -56,14 +53,15 @@ public class AFragment extends Fragment {
             ViewGroup container,
             Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_a, container, false);
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_b, container, false);
 
         // Update the UI based on args passed into newInstance()
-        ((TextView) view.findViewById(R.id.fragment_a_city)).setText(city);
+        ((TextView) view.findViewById(R.id.fragment_b_name)).setText(name);
 
         // Event handlers
-        Button displayName = (Button) view.findViewById(R.id.fragment_a_display_name);
-        displayName.setOnClickListener(displayNameHandler);
+        ((Button) view.findViewById(R.id.fragment_b_update_city))
+                .setOnClickListener(updateCityHandler);
 
         return view;
     }
@@ -85,9 +83,10 @@ public class AFragment extends Fragment {
     }
 
     public interface Callbacks {
-        public void updateName(String name);
+        public void setCity(String city);
     }
 
-    // AFragment has no public methods as the containing Activity never passed data down to the
+    // BFragment has no public methods as the containing Activity never passed data down to the
     // Fragment after the Fragment is created.
+
 }
