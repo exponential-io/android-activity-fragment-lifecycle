@@ -59,11 +59,13 @@ activities and fragments are tracked.
 
 ### Pause Activity
 
-
+- onPause()
 
 ### Pause Activity with Fragment
 
 ### Resume Activity after Pause
+
+- onResume()
 
 ### Resume Activity after Pause with Fragment
 

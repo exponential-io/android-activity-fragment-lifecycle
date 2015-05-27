@@ -16,4 +16,6 @@
     <string name="alert_dialog_cancel">Cancel</string>
     <string name="title_activity_dialog">DialogActivity</string>
     <string name="button_close">Close</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
 </resources>
