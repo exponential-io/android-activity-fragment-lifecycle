@@ -1,8 +1,7 @@
 package io.exponential.androidactivityandfragmentlifecycle;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -11,36 +10,32 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-// Change ActionBarActivity to
-public class AActivity extends AppCompatActivity
-    implements AFragment.Callbacks {
 
-    public static final String EXTRA_NAME = "io.exponential.androidactivityandfragmentlifecycle.NAME";
-    private static final String TAG = "AActivity:lcm";
+public class CActivity extends AppCompatActivity
+    implements AlertDialogFragment.Callbacks {
+
+    private static final String TAG = "CActivity:lcm";
+
+    OnClickListener openDialog = new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            String title = "Alert";
+            String message = "The Activity has been paused.";
+
+            DialogFragment alertDialog = AlertDialogFragment.newInstance(title, message);
+            alertDialog.show(getSupportFragmentManager(), "alertDialog");
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.v(TAG, "S:onCreate");
-        setContentView(R.layout.activity_a);
+        setContentView(R.layout.activity_c);
 
-        // Default value for city
-        String city = "User has not entered a city";
+        // Event handlers
+        ((Button) findViewById(R.id.activity_c_pause)).setOnClickListener(openDialog);
 
-        // Get the Intent if one was passed into this Activity. When the Activity is first started,
-        // no Intent will be available. However, when BActivity calls startActivity() is passes a
-        // Bundle to AActivity that includes the user's city.
-        Intent intent = getIntent();
-        if (intent != null) {
-            city = intent.getStringExtra(BActivity.EXTRA_CITY);
-        }
-
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-
-        AFragment aFragment = AFragment.newInstance(city);
-        ft.add(R.id.activity_a_fragment_container, aFragment);
-
-        ft.commit();
         Log.v(TAG, "E:onCreate");
     }
 
@@ -89,7 +84,7 @@ public class AActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_a, menu);
+        getMenuInflater().inflate(R.menu.menu_c, menu);
         return true;
     }
 
@@ -108,16 +103,15 @@ public class AActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    /**
-     * Receive the user's full name from AFragment and pass it to BActivity via an Intent. BActivity
-     * then passes the value of 'name' to BFragment via BFragment.newInstance().
-     *
-     * @param name {String} User's full name.
-     */
+    // AlertDialogFragment.Callbacks
     @Override
-    public void updateName(String name) {
-        Intent intent = new Intent(AActivity.this, BActivity.class);
-        intent.putExtra(EXTRA_NAME, name);
-        startActivity(intent);
+    public void onClickAlertOK() {
+        Log.v(TAG, "Close alert dialog");
     }
+
+    @Override
+    public void onClickAlertCancel() {
+        Log.v(TAG, "Close alert dialog");
+    }
+
 }

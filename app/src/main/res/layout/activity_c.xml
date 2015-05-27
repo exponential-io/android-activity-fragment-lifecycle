@@ -7,17 +7,17 @@
               android:paddingLeft="@dimen/activity_horizontal_margin"
               android:paddingRight="@dimen/activity_horizontal_margin"
               android:paddingTop="@dimen/activity_vertical_margin"
-              tools:context="io.exponential.androidactivityandfragmentlifecycle.BActivity">
+              tools:context="io.exponential.androidactivityandfragmentlifecycle.CActivity">
 
-    <Button
-        android:id="@+id/display_activity_c"
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/display_activity_c"/>
+        android:text="@string/activity_c_header"/>
 
-    <FrameLayout
-        android:id="@+id/activity_b_fragment_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/activity_c_pause"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/pause_activity"/>
 
 </LinearLayout>

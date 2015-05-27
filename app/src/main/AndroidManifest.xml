@@ -24,6 +24,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="io.exponential.androidactivityandfragmentlifecycle.AActivity" />
         </activity>
+        <activity
+            android:name=".CActivity"
+            android:label="@string/title_activity_c"
+            android:parentActivityName=".BActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="io.exponential.androidactivityandfragmentlifecycle.BActivity" />
+        </activity>
     </application>
 
 </manifest>

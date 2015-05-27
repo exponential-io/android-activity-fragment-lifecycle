@@ -6,12 +6,23 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 
 public class BActivity extends AppCompatActivity
     implements BFragment.Callbacks {
 
     public static final String EXTRA_CITY = "io.exponential.androidactivityandfragmentlifecycle.CITY";
+    private static final String TAG = "BActivity:lcm";
+
+    View.OnClickListener displayActivityC = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(BActivity.this, CActivity.class);
+            startActivity(intent);
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +42,9 @@ public class BActivity extends AppCompatActivity
         ft.add(R.id.activity_b_fragment_container, bFragment);
 
         ft.commit();
+
+        // Event handlers
+        ((Button) findViewById(R.id.display_activity_c)).setOnClickListener(displayActivityC);
     }
 
     @Override
