@@ -4,6 +4,17 @@ Learn about the Android Activity and Fragment lifecycles. Each lifecycle callbac
 message output at the beginning and end of the callback method's execution. The lifecycle for both
 activities and fragments are tracked.
 
+
+## Useful shortcuts
+
+The following three shortcuts are a faster method of file navigation than using a mouse and the
+**Project** pane (left pane).
+
+- `Ctrl + N`: Open a Java file.
+- `Ctrl + Shift + N`: Open a wider range of files, including layouts.
+- `Ctrl + Tab`: Iterate through a list of recently opened files.
+
+
 ## Logging in Android
 
 - Create a `private static final String TAG = "ActivityOrFragmentName"` at the top of each
@@ -55,13 +66,29 @@ activities and fragments are tracked.
 
 ### Create Activity with Fragment
 
-
+Type     | Method            |
+---------|-------------------|------
+Activity | onCreate          | Start
+Fragment | newInstance       | Start
+Fragment | Constructor       | Start/End
+Fragment | newInstance       | End
+Activity | onCreate          | End
+Fragment | onAttach          | Start/End
+Fragment | onCreate          | Start/End
+Fragment | onCreateView      | Start/End
+Fragment | onActivityCreated | Start/End
+Fragment | onStart           | Start/End
+Activity | onStart           | Start/End
+Activity | onResume          | Start/End
+Fragment | onResume          | Start/End
 
 ### Pause Activity
 
 - onPause()
 
 ### Pause Activity with Fragment
+
+
 
 ### Resume Activity after Pause
 

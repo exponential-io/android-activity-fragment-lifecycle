@@ -16,12 +16,12 @@ public class AActivity extends AppCompatActivity
     implements AFragment.Callbacks {
 
     public static final String EXTRA_NAME = "io.exponential.androidactivityandfragmentlifecycle.NAME";
-    private static final String TAG = "AActivity:lcm";
+    private static final String TAG = "AActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.v(TAG, "S:onCreate");
+        Log.v(TAG, "S:lcm:onCreate");
         setContentView(R.layout.activity_a);
 
         // Default value for city
@@ -41,49 +41,49 @@ public class AActivity extends AppCompatActivity
         ft.add(R.id.activity_a_fragment_container, aFragment);
 
         ft.commit();
-        Log.v(TAG, "E:onCreate");
+        Log.v(TAG, "E:lcm:onCreate");
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        Log.v(TAG, "S:onStart");
-        Log.v(TAG, "E:onStart");
+        Log.v(TAG, "S:lcm:onStart");
+        Log.v(TAG, "E:lcm:onStart");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Log.v(TAG, "S:onResume");
-        Log.v(TAG, "E:onResume");
+        Log.v(TAG, "S:lcm:onResume");
+        Log.v(TAG, "E:lcm:onResume");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Log.v(TAG, "S:onPause");
-        Log.v(TAG, "E:onPause");
+        Log.v(TAG, "S:lcm:onPause");
+        Log.v(TAG, "E:lcm:onPause");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Log.v(TAG, "S:onStop");
-        Log.v(TAG, "E:onStop");
+        Log.v(TAG, "S:lcm:onStop");
+        Log.v(TAG, "E:lcm:onStop");
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        Log.v(TAG, "S:onRestart");
-        Log.v(TAG, "E:onRestart");
+        Log.v(TAG, "S:lcm:onRestart");
+        Log.v(TAG, "E:lcm:onRestart");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.v(TAG, "S:onDestroy");
-        Log.v(TAG, "E:onDestroy");
+        Log.v(TAG, "S:lcm:onDestroy");
+        Log.v(TAG, "E:lcm:onDestroy");
     }
 
     @Override
