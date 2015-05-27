@@ -24,8 +24,8 @@ activities and fragments are tracked.
 ## Activity lifecycle callback methods
 
 - onCreate()
-- onStart()
 - onRestart(): Only called after onStop()
+- onStart()
 - onResume()
 - onPause()
 - onStop()
@@ -49,9 +49,17 @@ activities and fragments are tracked.
 
 ### Create Activity
 
+- onCreate()
+- onStart()
+- onResume()
+
 ### Create Activity with Fragment
 
+
+
 ### Pause Activity
+
+
 
 ### Pause Activity with Fragment
 
@@ -61,8 +69,15 @@ activities and fragments are tracked.
 
 ### Stop Activity
 
+- onPause()
+- onStop()
+
 ### Stop Activity with Fragment
 
 ### Restart Activity after Stop
+
+- onRestart()
+- onStart()
+- onResume()
 
 ### Restart Activity after Stop with Fragment

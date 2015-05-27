@@ -1,5 +1,6 @@
 package io.exponential.androidactivityandfragmentlifecycle;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
@@ -14,71 +15,86 @@ import android.widget.Button;
 public class CActivity extends AppCompatActivity
     implements AlertDialogFragment.Callbacks {
 
-    private static final String TAG = "CActivity:lcm";
+    private static final String TAG = "CActivity";
+    private static final String LOG_PREFIX = "lcm:";
 
-    OnClickListener openDialog = new OnClickListener() {
+    OnClickListener openFragmentDialog = new OnClickListener() {
         @Override
         public void onClick(View v) {
             String title = "Alert";
-            String message = "The Activity has been paused.";
+            String message = "The Activity has NOT been paused.";
 
             DialogFragment alertDialog = AlertDialogFragment.newInstance(title, message);
             alertDialog.show(getSupportFragmentManager(), "alertDialog");
         }
     };
 
+    OnClickListener openActivityDialog = new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            String title = "Alert";
+            String message = "The Activity has been paused.";
+
+            Intent intent = new Intent(CActivity.this, DialogActivity.class);
+            intent.putExtra(DialogActivity.EXTRA_DIALOG_TITLE, title);
+            intent.putExtra(DialogActivity.EXTRA_DIALOG_MESSAGE, message);
+            startActivity(intent);
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.v(TAG, "S:onCreate");
+        Log.v(TAG, "S:" + LOG_PREFIX + "onCreate");
         setContentView(R.layout.activity_c);
 
         // Event handlers
-        ((Button) findViewById(R.id.activity_c_pause)).setOnClickListener(openDialog);
+        ((Button) findViewById(R.id.activity_c_no_pause)).setOnClickListener(openFragmentDialog);
+        ((Button) findViewById(R.id.activity_c_pause)).setOnClickListener(openActivityDialog);
 
-        Log.v(TAG, "E:onCreate");
+        Log.v(TAG, "E:" + LOG_PREFIX + "onCreate");
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        Log.v(TAG, "S:onStart");
-        Log.v(TAG, "E:onStart");
+        Log.v(TAG, "S:" + LOG_PREFIX + "onStart");
+        Log.v(TAG, "E:" + LOG_PREFIX + "onStart");
     }
 
     @Override
     protected void onResume() {
+        Log.v(TAG, "S:" + LOG_PREFIX + "onResume");
         super.onResume();
-        Log.v(TAG, "S:onResume");
-        Log.v(TAG, "E:onResume");
+        Log.v(TAG, "E:" + LOG_PREFIX + "onResume");
     }
 
     @Override
     protected void onPause() {
+        Log.v(TAG, "S:" + LOG_PREFIX + "onPause");
         super.onPause();
-        Log.v(TAG, "S:onPause");
-        Log.v(TAG, "E:onPause");
+        Log.v(TAG, "E:" + LOG_PREFIX + "onPause");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Log.v(TAG, "S:onStop");
-        Log.v(TAG, "E:onStop");
+        Log.v(TAG, "S:" + LOG_PREFIX + "onStop");
+        Log.v(TAG, "E:" + LOG_PREFIX + "onStop");
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        Log.v(TAG, "S:onRestart");
-        Log.v(TAG, "E:onRestart");
+        Log.v(TAG, "S:" + LOG_PREFIX + "onRestart");
+        Log.v(TAG, "E:" + LOG_PREFIX + "onRestart");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.v(TAG, "S:onDestroy");
-        Log.v(TAG, "E:onDestroy");
+        Log.v(TAG, "S:" + LOG_PREFIX + "onDestroy");
+        Log.v(TAG, "E:" + LOG_PREFIX + "onDestroy");
     }
 
     @Override

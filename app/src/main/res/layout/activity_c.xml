@@ -15,8 +15,14 @@
         android:text="@string/activity_c_header"/>
 
     <Button
+        android:id="@+id/activity_c_no_pause"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/no_pause_activity"/>
+
+    <Button
         android:id="@+id/activity_c_pause"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/pause_activity"/>
 

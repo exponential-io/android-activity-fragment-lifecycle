@@ -3,24 +3,16 @@ package io.exponential.androidactivityandfragmentlifecycle;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-
 
 /**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * to handle interaction events.
- * Use the {@link AlertDialogFragment#newInstance} factory method to
- * create an instance of this fragment.
+ * A simple {@link Fragment} subclass. Activities that contain this fragment must implement the
+ * Callback Interface to handle interaction events. Use the {@link AlertDialogFragment#newInstance}
+ * factory method to create an instance of this fragment.
  */
 public class AlertDialogFragment extends DialogFragment {
     private static final String ARG_MESSAGE = "AlertDialogFragment.message";
@@ -32,10 +24,9 @@ public class AlertDialogFragment extends DialogFragment {
     private static final int DEFAULT_THEME = 0;
 
     /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
+     * Factory method to create a new instance of this fragment.
      *
-     * @param title Dialog title.
+     * @param title   Dialog title.
      * @param message Message to display in dialog.
      * @return A new instance of fragment AlertDialogFragment.
      */
@@ -76,8 +67,6 @@ public class AlertDialogFragment extends DialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        //return super.onCreateDialog(savedInstanceState);
-
         return new AlertDialog
                 .Builder(getActivity())
                 .setTitle(dialogTitle)
@@ -85,8 +74,7 @@ public class AlertDialogFragment extends DialogFragment {
                 .setPositiveButton(R.string.alert_dialog_ok,
                         new DialogInterface.OnClickListener() {
                             @Override
-                            public void onClick(DialogInterface dialog, int which) {
-//                                ((CActivity) getActivity()).onClickAlertOK();
+                            public void onClick(DialogInterface dialog, int clickedButton) {
                                 callbacks.onClickAlertOK();
                             }
                         }
@@ -94,8 +82,7 @@ public class AlertDialogFragment extends DialogFragment {
                 .setNegativeButton(R.string.alert_dialog_cancel,
                         new DialogInterface.OnClickListener() {
                             @Override
-                            public void onClick(DialogInterface dialog, int which) {
-//                                ((CActivity) getActivity()).onClickAlertCancel();
+                            public void onClick(DialogInterface dialog, int clickedButton) {
                                 callbacks.onClickAlertCancel();
                             }
                         }
@@ -103,39 +90,15 @@ public class AlertDialogFragment extends DialogFragment {
                 .create();
     }
 
-    //    @Override
-//    public View onCreateView(
-//            LayoutInflater inflater,
-//            ViewGroup container,
-//            Bundle savedInstanceState) {
-//
-//        // Inflate the layout for this fragment
-//        View view = inflater.inflate(R.layout.fragment_alert_dialog, container, false);
-//
-//        ((TextView) view.findViewById(R.id.alert_dialog_message)).setText(message);
-//
-//
-//        return view;
-//    }
-
     @Override
     public void onDetach() {
         super.onDetach();
         callbacks = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
     public interface Callbacks {
         public void onClickAlertOK();
+
         public void onClickAlertCancel();
     }
 

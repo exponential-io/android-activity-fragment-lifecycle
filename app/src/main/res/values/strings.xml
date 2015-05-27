@@ -8,14 +8,12 @@
     <string name="label_city">In which city do you live?</string>
     <string name="display_city">Display City</string>
     <string name="title_activity_c">CActivity</string>
-
-    <string name="hello_world">Hello world!</string>
     <string name="activity_c_header">Activity C</string>
-    <string name="pause_activity">Pause Activity</string>
+    <string name="pause_activity">Pause Activity (Activity Dialog)</string>
+    <string name="no_pause_activity">Do Not Pause Activity (Fragment Dialog)</string>
     <string name="display_activity_c">Display Activity C</string>
-
-<!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="alert_dialog_ok">OK</string>
     <string name="alert_dialog_cancel">Cancel</string>
+    <string name="title_activity_dialog">DialogActivity</string>
+    <string name="button_close">Close</string>
 </resources>
