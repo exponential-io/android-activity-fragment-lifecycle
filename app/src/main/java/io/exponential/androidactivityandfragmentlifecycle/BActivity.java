@@ -2,25 +2,60 @@ package io.exponential.androidactivityandfragmentlifecycle;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.Toast;
 
 
 public class BActivity extends AppCompatActivity
-    implements BFragment.Callbacks {
+    implements BFragment.Callbacks, AlertDialogFragment.Callbacks {
 
     public static final String EXTRA_CITY = "io.exponential.androidactivityandfragmentlifecycle.CITY";
     private static final String TAG = "BActivity";
 
-    View.OnClickListener displayActivityC = new View.OnClickListener() {
+    OnClickListener openFragmentDialog = new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            String title = "Alert";
+            String message = "The Activity has NOT been paused.";
+
+            DialogFragment alertDialog = AlertDialogFragment.newInstance(title, message);
+            alertDialog.show(getSupportFragmentManager(), "alertDialog");
+        }
+    };
+
+    OnClickListener openActivityDialog = new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            String title = "Alert";
+            String message = "The Activity has been paused.";
+
+            Intent intent = new Intent(BActivity.this, DialogActivity.class);
+            intent.putExtra(DialogActivity.EXTRA_DIALOG_TITLE, title);
+            intent.putExtra(DialogActivity.EXTRA_DIALOG_MESSAGE, message);
+            startActivity(intent);
+        }
+    };
+
+    OnClickListener displayActivityC = new OnClickListener() {
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(BActivity.this, CActivity.class);
+            startActivity(intent);
+        }
+    };
+
+    OnClickListener displayActivityD = new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(BActivity.this, DActivity.class);
             startActivity(intent);
         }
     };
@@ -46,7 +81,10 @@ public class BActivity extends AppCompatActivity
         ft.commit();
 
         // Event handlers
+        ((Button) findViewById(R.id.activity_b_no_pause)).setOnClickListener(openFragmentDialog);
+        ((Button) findViewById(R.id.activity_b_pause)).setOnClickListener(openActivityDialog);
         ((Button) findViewById(R.id.display_activity_c)).setOnClickListener(displayActivityC);
+        ((Button) findViewById(R.id.display_activity_d)).setOnClickListener(displayActivityD);
 
         Log.v(TAG, "E:lcm:onCreate");
     }
@@ -120,5 +158,15 @@ public class BActivity extends AppCompatActivity
         Intent intent = new Intent(BActivity.this, AActivity.class);
         intent.putExtra(EXTRA_CITY, city);
         startActivity(intent);
+    }
+
+    @Override
+    public void onClickAlertOK() {
+        Toast.makeText(BActivity.this, "OK", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onClickAlertCancel() {
+        Toast.makeText(BActivity.this, "Cancel", Toast.LENGTH_SHORT).show();
     }
 }
