@@ -183,23 +183,26 @@ Activity | A    | onStop            | Start/End
 
 ### Stop current Activity and Create new Activity w/Fragments via `<fragment>`
 
+- Current Activity = A with Fragment = AF                                        
+- New Activity = B with Fragment = BF
+
 Type     | Name | Method            |
 ---------|--------------------------|------
-Fragment | BF   | onPause           | Start/End
-Activity | B    | onPause           | Start/End
-Activity | D    | onCreate          | Start
-Fragment | DF   | Constructor       | Start/End
-Fragment | DF   | onAttach          | Start/End
-Fragment | DF   | onCreate          | Start/End
-Fragment | DF   | onCreateView      | Start/End
-Activity | D    | onCreate          | End
-Fragment | DF   | onActivityCreated | Start/End
-Fragment | DF   | onStart           | Start/End
-Activity | D    | onStart           | Start/End
-Activity | D    | onResume          | Start/End
-Fragment | DF   | onResume          | Start/End
-Fragment | BF   | onStop            | Start/End
-Activity | B    | onStop            | Start/End
+Fragment | AF   | onPause           | Start/End
+Activity | A    | onPause           | Start/End
+Activity | B    | onCreate          | Start
+Fragment | BF   | Constructor       | Start/End
+Fragment | BF   | onAttach          | Start/End
+Fragment | BF   | onCreate          | Start/End
+Fragment | BF   | onCreateView      | Start/End
+Activity | B    | onCreate          | End
+Fragment | BF   | onActivityCreated | Start/End
+Fragment | BF   | onStart           | Start/End
+Activity | B    | onStart           | Start/End
+Activity | B    | onResume          | Start/End
+Fragment | BF   | onResume          | Start/End
+Fragment | AF   | onStop            | Start/End
+Activity | A    | onStop            | Start/End
 
 
 ### Pause Activity w/Fragment

@@ -1,5 +1,6 @@
 package io.exponential.androidactivityandfragmentlifecycle;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
@@ -162,11 +163,21 @@ public class BActivity extends AppCompatActivity
 
     @Override
     public void onClickAlertOK() {
-        Toast.makeText(BActivity.this, "OK", Toast.LENGTH_SHORT).show();
+        // Short form of the code below is:
+        //Toast.makeText(getApplicationContext(), "OK", Toast.LENGTH_SHORT).show();
+
+        Context context = getApplicationContext();
+        CharSequence message = "OK";
+        int duration = Toast.LENGTH_SHORT;
+        Toast.makeText(context, message, duration).show();
     }
 
     @Override
     public void onClickAlertCancel() {
-        Toast.makeText(BActivity.this, "Cancel", Toast.LENGTH_SHORT).show();
+        Context context = getApplicationContext();
+        CharSequence message = "Cancel";
+        int duration = Toast.LENGTH_SHORT;
+        Toast toast = Toast.makeText(context, message, duration);
+        toast.show();
     }
 }
