@@ -120,13 +120,13 @@ Activity | onStart           | Start/End
 Activity | onResume          | Start/End
 Fragment | onResume          | Start/End
 
-### Create Activity w/Fragment via `&lt;fragment>`
+### Create Activity w/Fragment via `<fragment>`
 
-The lifecycle callback workflow for an Activity with Fragment via `&lt;fragment>` is different from the
+The lifecycle callback workflow for an Activity with Fragment via `<fragment>` is different from the
 workflow for an Activity with Fragment via `FragmentManager`.
 
 The following three lifecycle callback methods are called **before** Activity `onCreate` ends when
-we insert the Fragment via `&lt;fragment>`.
+we insert the Fragment via `<fragment>`.
 
 - onAttach
 - onCreate
@@ -181,7 +181,7 @@ Fragment | AF   | onStop            | Start/End
 Activity | A    | onStop            | Start/End
 
 
-### Stop current Activity and Create new Activity w/Fragments via `&lt;fragment>`
+### Stop current Activity and Create new Activity w/Fragments via `<fragment>`
 
 Type     | Name | Method            |
 ---------|--------------------------|------
