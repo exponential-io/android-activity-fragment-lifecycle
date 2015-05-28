@@ -22,11 +22,13 @@ The following three shortcuts are a faster method of file navigation than using 
 - Output a log message via `Log.d(TAG, "Some message");`.
 - Change d (debug) to v (verbose), or
 
+
 ## Features used in this repo
 
 - DialogFragment
     - http://developer.android.com/reference/android/app/DialogFragment.html
 - Toast
+    - http://developer.android.com/guide/topics/ui/notifiers/toasts.html
 
 
 ## How to view log messages
@@ -69,6 +71,15 @@ The first set of workflows are for a simple activity that does not use Fragments
 
 ### Stop current Activity and Create new Activity
 
+Type     | Name | Method            |
+---------|--------------------------|------
+Activity | A    | onPause           | Start/End
+Activity | B    | onCreate          | Start/End
+Activity | B    | onStart           | Start/End
+Activity | B    | onResume          | Start/End
+Activity | A    | onStop            | Start/End
+Activity | A    | onDestroy         | Start/End
+
 ### Pause Activity
 
 - onPause()
@@ -109,13 +120,13 @@ Activity | onStart           | Start/End
 Activity | onResume          | Start/End
 Fragment | onResume          | Start/End
 
-### Create Activity w/Fragment via <fragment>
+### Create Activity w/Fragment via `&lt;fragment>`
 
-The lifecycle callback workflow for an Activity with Fragment via `<fragment>` is different from the
+The lifecycle callback workflow for an Activity with Fragment via `&lt;fragment>` is different from the
 workflow for an Activity with Fragment via `FragmentManager`.
 
-The following three lifecycle callback methods are called **before** Activity onCreate ends when we
-insert the Fragment via `<fragment>`.
+The following three lifecycle callback methods are called **before** Activity `onCreate` ends when
+we insert the Fragment via `&lt;fragment>`.
 
 - onAttach
 - onCreate
@@ -142,6 +153,13 @@ Fragment | onResume          | Start/End
 - Current Activity = A with Fragment = AF
 - New Activity = B with Fragment = BF
 
+The following three lifecycle callback methods are called **after** Activity `onCreate` ends when we
+insert the Fragment via `FragmentManager` / `FragmentTransaction`.
+
+- onAttach
+- onCreate
+- onCreateView
+
 Type     | Name | Method            |
 ---------|--------------------------|------
 Fragment | AF   | onPause           | Start/End
@@ -162,7 +180,8 @@ Fragment | BF   | onResume          | Start/End
 Fragment | AF   | onStop            | Start/End
 Activity | A    | onStop            | Start/End
 
-### Stop current Activity and Create new Activity w/Fragments via <fragment>
+
+### Stop current Activity and Create new Activity w/Fragments via `&lt;fragment>`
 
 Type     | Name | Method            |
 ---------|--------------------------|------
@@ -182,12 +201,14 @@ Fragment | DF   | onResume          | Start/End
 Fragment | BF   | onStop            | Start/End
 Activity | B    | onStop            | Start/End
 
+
 ### Pause Activity w/Fragment
 
 Type     | Method            |
 ---------|-------------------|------
 Fragment | onPause           | Start/end
 Activity | onPause           | Start/end
+
 
 ### Resume Activity after Pause w/Fragment
 
@@ -206,6 +227,7 @@ Activity | onPause           | Start/End
 Fragment | onStop            | Start/End
 Activity | onStop            | Start/End
 
+
 ### Restart Activity after Stop w/Fragment
 
 Type     | Method            |
@@ -215,6 +237,7 @@ Fragment | onRestart         | Start/End
 Activity | onStart           | Start/End
 Activity | onResume          | Start/End
 Fragment | onResume          | Start/End
+
 
 ## Additional reading
 
